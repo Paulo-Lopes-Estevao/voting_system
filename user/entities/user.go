@@ -1,4 +1,4 @@
-package user
+package entities
 
 import (
 	"errors"
@@ -12,9 +12,9 @@ type User struct {
 }
 
 func NewUser(name string) (*User, error) {
-	uuid, _ := uuid.NewV4()
+	uuid := uuid.NewV4().String()
 	user := &User{
-		ID:   uuid.String(),
+		ID:   uuid,
 		Name: name,
 	}
 
