@@ -82,26 +82,7 @@ func Connect() *amqp.Channel {
 	return ch
 }
 
-func Producer(payload []byte, exchange string, routingKey string, ch *amqp.Channel) {
-
-	err := ch.Publish(
-		exchange,
-		routingKey,
-		false,
-		false,
-		amqp.Publishing{
-			ContentType: "application/json",
-			Body:        []byte(payload),
-		})
-
-	if err != nil {
-		panic(err.Error())
-	}
-
-	fmt.Println("Message sent")
-}
-
-func Consumer(queue string, ch *amqp.Channel, in chan []byte) {
+func ShowVotes(queue string, ch *amqp.Channel, in chan []byte) {
 
 	q, err := ch.QueueDeclare(
 		queue,
