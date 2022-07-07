@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4.3.2/css/metro-all.min.css">
+    <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro.min.css">
+    <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-colors.min.css">
+    <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-rtl.min.css">
+    <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-icons.min.css">
+
+    <title>Voting</title>
+
+    <style>
+        .login-form {
+            width: 350px;
+            height: auto;
+            top: 50%;
+            margin-top: -280px;
+        }
+    </style>
+</head>
+
+<body class="h-vh-100 bg-brandColor2 fg-white">
+    <div class="">
+        <h1 class="d-flex flex-justify-center pt-3">Vote</h1>
+        <h3 class="d-flex flex-justify-around text-center">Best Social Network</h3>
+    </div>
+
+
+            <form method="post" action="/vote" class="login-form p-6 mx-auto border fg-white bd-default win-shadow"">
+                <div class="mb-2 form-group">
+                    <label class="">Nome</label>
+                    <div class="">
+                        <input type="text" name="name" data-role="input" data-prepend="<span class='mif-user'>" required>
+                    </div>
+                </div>
+                <div class="">
+                    <label class="cell-sm-2">Social Networks</label>
+                    <div class="form-group">
+                        <input type="radio" name="socialnetwork" data-role="radio" data-caption="Facebook"
+                            value="Facebook" checked>
+                        <input type="radio" name="socialnetwork" data-role="radio" data-caption="WhatsApp"
+                            value="WhatsApp">
+                        <input type="radio" name="socialnetwork" data-role="radio" data-caption="WeChat" value="WeChat">
+                        <input type="radio" name="socialnetwork" data-role="radio" data-caption="Tumblr" value="Tumblr">
+                        <input type="radio" name="socialnetwork" data-role="radio" data-caption="Instagram"
+                            value="Instagram">
+                        <input type="radio" name="socialnetwork" data-role="radio" data-caption="Twitter"
+                            value="Twitter">
+                        <input type="radio" name="socialnetwork" data-role="radio" data-caption="Skype" value="Skype">
+                        <input type="radio" name="socialnetwork" data-role="radio" data-caption="Viber" value="Viber">
+                        <input type="radio" name="socialnetwork" data-role="radio" data-caption="Snapchat"
+                            value="Snapchat">
+                        <input type="radio" name="socialnetwork" data-role="radio" data-caption="Pinterest"
+                            value="Pinterest">
+                        <input type="radio" name="socialnetwork" data-role="radio" data-caption="LinkedIn"
+                            value="LinkedIn">
+                        <input type="radio" name="socialnetwork" data-role="radio" data-caption="Telegram"
+                            value="Telegram">
+                        <input type="radio" name="socialnetwork" data-role="radio" data-caption="Reddit" value="Reddit">
+                        <input type="radio" name="socialnetwork" data-role="radio" data-caption="YouTube"
+                            value="YouTube">
+                        <input type="radio" name="socialnetwork" data-role="radio" data-caption="Upstream"
+                            value="Upstream">
+                        <input type="radio" name="socialnetwork" data-role="radio" data-caption="Discord"
+                            value="Discord">
+                        <input type="radio" name="socialnetwork" data-role="radio" data-caption="TikTok" value="TikTok">
+                        <input type="radio" name="socialnetwork" data-role="radio" data-caption="Triller"
+                            value="Triller">
+                        <input type="radio" name="socialnetwork" data-role="radio" data-caption="Twitch" value="Twitch">
+                        <input type="radio" name="socialnetwork" data-role="radio" data-caption="Soundcloud"
+                            value="Soundcloud">
+                        <input type="radio" name="socialnetwork" data-role="radio" data-caption="Medium" value="Medium">
+                        <input type="radio" name="socialnetwork" data-role="radio" data-caption="Vimeo" value="Vimeo">
+                        <input type="radio" name="socialnetwork" data-role="radio" data-caption="Giphy" value="Gipyn">
+                    </div>
+                </div>
+
+                <div class="">
+                    <div class="form-group">
+                        <button type="submit" class="button primary">Sign in</button>
+                    </div>
+                </div>
+            </form>
+
+    <script src="https://cdn.metroui.org.ua/v4.3.2/js/metro.min.js"></script>
+</body>
+
+</html>
