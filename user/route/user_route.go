@@ -30,7 +30,7 @@ func UserRoute(e *echo.Echo) *echo.Echo {
 	})
 
 	e.POST("/uservote", func(c echo.Context) error {
-		return controller.HomePageVoteController(c)
+		return controller.UserVoteController(c)
 	})
 
 	return e
