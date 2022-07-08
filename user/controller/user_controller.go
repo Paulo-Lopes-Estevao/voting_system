@@ -2,7 +2,6 @@ package controller
 
 import (
 	"encoding/json"
-	"fmt"
 	"gomq/user/queue"
 	"gomq/user/usecase"
 	"net/http"
@@ -32,10 +31,12 @@ func UserVoteController(c echo.Context) error {
 	}
 
 	data, _ := json.Marshal(user_vote)
-	fmt.Println(string(data))
 
 	connection := queue.Connect()
-	queue.UserMarkVote(data, "vote_ex", "vote_rk", connection)
+	queue.UserMarkVote(data, "vote_ex", "vote_rk", "direct", connection)
 
-	return c.Render(http.StatusOK, "user_vote.html", map[string]interface{}{})
+	return c.Render(http.StatusOK, "user_vote.html", map[string]interface{}{
+		"created": true,
+		"data":    "Processed",
+	})
 }
