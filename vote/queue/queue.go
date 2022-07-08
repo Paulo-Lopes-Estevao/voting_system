@@ -11,6 +11,12 @@ import (
 	rabbitmq "github.com/wagslane/go-rabbitmq"
 )
 
+func failOnError(err error, msg string) {
+	if err != nil {
+		log.Panicf("%s: %s", msg, err)
+	}
+}
+
 var consumerName = "example"
 
 func ConsumerStart(ExchangeName, ExchangeKind, queue string, routingKeys []string, messages chan string) {
@@ -82,10 +88,29 @@ func Connect() *amqp.Channel {
 	return ch
 }
 
-func ShowVotes(queue string, ch *amqp.Channel, in chan []byte) {
+/*
+exchange string -- exchange name
+
+routingKey string -- routing key
+
+ExchangeKind string -- types are "direct", "fanout", "topic" and "headers"
+
+*/
+func ShowVotes(exchange, routingKey, ExchangeKind string, ch *amqp.Channel, in chan []byte) {
+
+	err := ch.ExchangeDeclare(
+		exchange,     // name
+		ExchangeKind, // type
+		true,         // durable
+		false,        // auto-deleted
+		false,        // internal
+		false,        // no-wait
+		nil,          // arguments
+	)
+	failOnError(err, "Failed to declare an exchange")
 
 	q, err := ch.QueueDeclare(
-		queue,
+		"vote_queue",
 		true,
 		false,
 		false,
@@ -96,6 +121,15 @@ func ShowVotes(queue string, ch *amqp.Channel, in chan []byte) {
 	if err != nil {
 		panic(err.Error())
 	}
+
+	err = ch.QueueBind(
+		q.Name,     // queue name
+		routingKey, // routing key
+		exchange,   // exchange
+		false,
+		nil,
+	)
+	failOnError(err, "Failed to bind a queue")
 
 	msgs, err := ch.Consume(
 		q.Name,
