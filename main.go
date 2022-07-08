@@ -1,19 +1,13 @@
 package main
 
 import (
-	user_roouting "gomq/user/route"
-	vote_routing "gomq/vote/route"
-
-	"github.com/labstack/echo/v4"
+	user_server "gomq/user/server"
+	vote_server "gomq/vote/server"
 )
 
 func main() {
 
-	e := echo.New()
-
-	user_roouting.UserRoute(e)
-	vote_routing.VoteRoute(e)
-
-	e.Logger.Fatal(e.Start(":8000"))
+	go user_server.UserServer()
+	vote_server.VoteServer()
 
 }
