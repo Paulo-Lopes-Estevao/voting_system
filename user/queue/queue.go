@@ -2,8 +2,9 @@ package queue
 
 import (
 	"fmt"
+	"log"
 
-	"github.com/streadway/amqp"
+	amqp "github.com/rabbitmq/amqp091-go"
 )
 
 func Connect() *amqp.Channel {
@@ -22,9 +23,46 @@ func Connect() *amqp.Channel {
 	return ch
 }
 
-func UserMarkVote(payload []byte, exchange string, routingKey string, ch *amqp.Channel) {
+func failOnError(err error, msg string) {
+	if err != nil {
+		log.Panicf("%s: %s", msg, err)
+	}
+}
 
-	err := ch.Publish(
+func UserMarkVote(payload []byte, exchange, routingKey, ExchangeKind string, ch *amqp.Channel) {
+
+	err := ch.ExchangeDeclare(
+		exchange,     // name
+		ExchangeKind, // type
+		true,         // durable
+		false,        // auto-deleted
+		false,        // internal
+		false,        // no-wait
+		nil,          // arguments
+	)
+	failOnError(err, "Failed to declare an exchange")
+
+	q, err := ch.QueueDeclare(
+		"vote_queue",
+		true,
+		false,
+		false,
+		false,
+		nil,
+	)
+
+	failOnError(err, "Failed to declare a queue")
+
+	err = ch.QueueBind(
+		q.Name,     // queue name
+		routingKey, // routing key
+		exchange,   // exchange
+		false,
+		nil,
+	)
+	failOnError(err, "Failed to bind a queue")
+
+	err = ch.Publish(
 		exchange,
 		routingKey,
 		false,
@@ -38,5 +76,5 @@ func UserMarkVote(payload []byte, exchange string, routingKey string, ch *amqp.C
 		panic(err.Error())
 	}
 
-	fmt.Println("Message sent")
+	fmt.Println("Message processed")
 }
