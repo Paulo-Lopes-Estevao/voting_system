@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4.3.2/css/metro-all.min.css">
+    <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro.min.css">
+    <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-colors.min.css">
+    <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-rtl.min.css">
+    <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-icons.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+    <title>Voting</title>
+
+    <style>
+        .chart {
+            margin-top: 210px;
+        }
+
+        .pagination {
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+
+<body class="h-vh-100">
+    <div class="">
+        <h1 class="d-flex flex-justify-center pt-3">Vote</h1>
+        <h3 class="d-flex flex-justify-around text-center">Best Social Network</h3>
+    </div>
+
+    <div class="container chart">
+        <div class="row">
+            <div class="cell-sm-12">
+                <canvas id="myChart" style="width:100%;max-width:1200px"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1 class="text-center">User</h1>
+        <h3 class="text-center">With sorting, filtering and pagination</h3>
+        <table class="table striped table-border mt-4" id="example" data-role="table" data-pagination="true">
+            <thead>
+                <tr>
+                    <th class="sortable-column sort-asc">Name</th>
+                    <th class="sortable-column sort-desc">Position</th>
+                    <th class="sortable-column">Office</th>
+                    <th class="sortable-column" data-format="number">Age</th>
+                    <th class="sortable-column" data-format="date">Start date</th>
+                    <th class="sortable-column" data-format="money">Salary</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Uriah Buchanan</td>
+                    <td>Arcu Sed Corp.</td>
+                    <td>Cajazeiras</td>
+                    <td>48</td>
+                    <td>2009/01/03</td>
+                    <td>$5,141</td>
+                </tr>
+                <tr>
+                    <td>Gemma Whitney</td>
+                    <td>Lobortis Tellus Inc.</td>
+                    <td>San Vito al Tagliamento</td>
+                    <td>46</td>
+                    <td>2015/11/10</td>
+                    <td>$7,345</td>
+                </tr>
+                <tr>
+                    <td>Colt Santiago</td>
+                    <td>Quis Urna Company</td>
+                    <td>Huntsville</td>
+                    <td>40</td>
+                    <td>2011/06/22</td>
+                    <td>$5,223</td>
+                </tr>
+                <tr>
+                    <td>Colette Talley</td>
+                    <td>Id Ante Dictum Consulting</td>
+                    <td>Castiglione di Garfagnana</td>
+                    <td>18</td>
+                    <td>2009/04/30</td>
+                    <td>$7,077</td>
+                </tr>
+                <tr>
+                    <td>Cody Johnson</td>
+                    <td>Facilisis LLP</td>
+                    <td>Bismil</td>
+                    <td>57</td>
+                    <td>2003/06/24</td>
+                    <td>$8,535</td>
+                </tr>
+                <tr>
+                    <td>Quinlan Sims</td>
+                    <td>Lacus Varius Et Industries</td>
+                    <td>Augusta</td>
+                    <td>27</td>
+                    <td>2000/10/01</td>
+                    <td>$8,571</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Office</th>
+                    <th>Age</th>
+                    <th>Start date</th>
+                    <th>Salary</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <script src="https://cdn.metroui.org.ua/v4.3.2/js/metro.min.js"></script>
+</body>
+<script>
+    var xValues = ["Facebook", "WhatsApp", "WeChat", "Tumblr", "Argentina"];
+    var yValues = [55, 49, 44, 24, 15];
+    var barColors = ["red", "green", "blue", "orange", "brown"];
+
+    new Chart("myChart", {
+        type: "bar",
+        data: {
+            labels: xValues,
+            datasets: [{
+                backgroundColor: barColors,
+                data: yValues
+            }]
+        },
+        options: {
+            legend: { display: false },
+            title: {
+                display: true,
+                text: "World Wine Production 2018"
+            }
+        }
+    });
+</script>
+
+</html>
