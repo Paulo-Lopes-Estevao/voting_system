@@ -40,89 +40,18 @@
         </div>
     </div>
 
-    <div class="container">
-        <h1 class="text-center">User</h1>
-        <h3 class="text-center">With sorting, filtering and pagination</h3>
-        <table class="table striped table-border mt-4" id="example" data-role="table" data-pagination="true">
-            <thead>
-                <tr>
-                    <th class="sortable-column sort-asc">Name</th>
-                    <th class="sortable-column sort-desc">Position</th>
-                    <th class="sortable-column">Office</th>
-                    <th class="sortable-column" data-format="number">Age</th>
-                    <th class="sortable-column" data-format="date">Start date</th>
-                    <th class="sortable-column" data-format="money">Salary</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Uriah Buchanan</td>
-                    <td>Arcu Sed Corp.</td>
-                    <td>Cajazeiras</td>
-                    <td>48</td>
-                    <td>2009/01/03</td>
-                    <td>$5,141</td>
-                </tr>
-                <tr>
-                    <td>Gemma Whitney</td>
-                    <td>Lobortis Tellus Inc.</td>
-                    <td>San Vito al Tagliamento</td>
-                    <td>46</td>
-                    <td>2015/11/10</td>
-                    <td>$7,345</td>
-                </tr>
-                <tr>
-                    <td>Colt Santiago</td>
-                    <td>Quis Urna Company</td>
-                    <td>Huntsville</td>
-                    <td>40</td>
-                    <td>2011/06/22</td>
-                    <td>$5,223</td>
-                </tr>
-                <tr>
-                    <td>Colette Talley</td>
-                    <td>Id Ante Dictum Consulting</td>
-                    <td>Castiglione di Garfagnana</td>
-                    <td>18</td>
-                    <td>2009/04/30</td>
-                    <td>$7,077</td>
-                </tr>
-                <tr>
-                    <td>Cody Johnson</td>
-                    <td>Facilisis LLP</td>
-                    <td>Bismil</td>
-                    <td>57</td>
-                    <td>2003/06/24</td>
-                    <td>$8,535</td>
-                </tr>
-                <tr>
-                    <td>Quinlan Sims</td>
-                    <td>Lacus Varius Et Industries</td>
-                    <td>Augusta</td>
-                    <td>27</td>
-                    <td>2000/10/01</td>
-                    <td>$8,571</td>
-                </tr>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <th>Name</th>
-                    <th>Position</th>
-                    <th>Office</th>
-                    <th>Age</th>
-                    <th>Start date</th>
-                    <th>Salary</th>
-                </tr>
-            </tfoot>
-        </table>
-    </div>
-
     <script src="https://cdn.metroui.org.ua/v4.3.2/js/metro.min.js"></script>
 </body>
 <script>
-    var xValues = ["Facebook", "WhatsApp", "WeChat", "Tumblr", "Argentina"];
+    var xValues = [
+        "Facebook", "WhatsApp", "WeChat", "Tumblr", "Instagram",
+        "Twitter", "Skype", "Viber", "Snapchat", "Pinterest",
+        "LinkedIn", "Telegram", "Reddit", "YouTube", "Upstream", 
+        "Discord", "TikTok", "Triller", "Twitch", "Soundcloud", 
+        "Medium", "Vimeo", "Gipyn"
+];
     var yValues = [55, 49, 44, 24, 15];
-    var barColors = ["red", "green", "blue", "orange", "brown"];
+    var barColors = ["#000", "green", "blue", "orange", "brown"];
 
     new Chart("myChart", {
         type: "bar",
