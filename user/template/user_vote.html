@@ -89,5 +89,31 @@
 
     <script src="https://cdn.metroui.org.ua/v4.3.2/js/metro.min.js"></script>
 </body>
+    <script>
+        function showSetupDemo(){
+        var notify = Metro.notify;
+        notify.setup({
+            width: 300,
+            duration: 1000,
+            animation: 'easeOutBounce'
+        });
+        notify.create("Processed");
+        notify.reset();
+    }
 
+    function showErrorNotCreated(){
+        var notify = Metro.notify;
+        notify.create("{{.error}}", "Alert", {
+            cls: "alert"
+        });
+    }
+
+    if ({{.created}} == true) {
+        showSetupDemo()
+    }
+    else{
+        showErrorNotCreated()
+    }
+        
+    </script>
 </html>
