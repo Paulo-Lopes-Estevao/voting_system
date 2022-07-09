@@ -28,48 +28,20 @@
 
 <body class="h-vh-100">
     <div class="">
-        <h1 class="d-flex flex-justify-center pt-3">Vote</h1>
+        <h1 class="d-flex flex-justify-center pt-3">Vote Count</h1>
         <h3 class="d-flex flex-justify-around text-center">Best Social Network</h3>
     </div>
 
     <div class="container chart">
         <div class="row">
             <div class="cell-sm-12">
-                <canvas id="myChart" style="width:100%;max-width:1200px"></canvas>
+                <h1 class="d-flex flex-justify-center pt-3">{{ .count }}</h1>
             </div>
         </div>
     </div>
 
     <script src="https://cdn.metroui.org.ua/v4.3.2/js/metro.min.js"></script>
 </body>
-<script>
-    var xValues = [
-        "Facebook", "WhatsApp", "WeChat", "Tumblr", "Instagram",
-        "Twitter", "Skype", "Viber", "Snapchat", "Pinterest",
-        "LinkedIn", "Telegram", "Reddit", "YouTube", "Upstream", 
-        "Discord", "TikTok", "Triller", "Twitch", "Soundcloud", 
-        "Medium", "Vimeo", "Gipyn"
-];
-    var yValues = [55, 49, 44, 24, 15];
-    var barColors = ["#000", "green", "blue", "orange", "brown"];
-
-    new Chart("myChart", {
-        type: "bar",
-        data: {
-            labels: xValues,
-            datasets: [{
-                backgroundColor: barColors,
-                data: yValues
-            }]
-        },
-        options: {
-            legend: { display: false },
-            title: {
-                display: true,
-                text: "World Wine Production 2018"
-            }
-        }
-    });
 </script>
 
 </html>
