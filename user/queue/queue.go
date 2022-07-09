@@ -31,17 +31,6 @@ func failOnError(err error, msg string) {
 
 func UserMarkVote(payload []byte, exchange, routingKey, ExchangeKind string, ch *amqp.Channel) {
 
-	err := ch.ExchangeDeclare(
-		exchange,     // name
-		ExchangeKind, // type
-		true,         // durable
-		false,        // auto-deleted
-		false,        // internal
-		false,        // no-wait
-		nil,          // arguments
-	)
-	failOnError(err, "Failed to declare an exchange")
-
 	q, err := ch.QueueDeclare(
 		"vote_queue",
 		true,
@@ -52,6 +41,17 @@ func UserMarkVote(payload []byte, exchange, routingKey, ExchangeKind string, ch 
 	)
 
 	failOnError(err, "Failed to declare a queue")
+
+	err = ch.ExchangeDeclare(
+		exchange,     // name
+		ExchangeKind, // type
+		true,         // durable
+		false,        // auto-deleted
+		false,        // internal
+		false,        // no-wait
+		nil,          // arguments
+	)
+	failOnError(err, "Failed to declare an exchange")
 
 	err = ch.QueueBind(
 		q.Name,     // queue name
