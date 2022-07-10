@@ -2,13 +2,16 @@ package entities
 
 import (
 	"errors"
+	"time"
 
 	uuid "github.com/satori/go.uuid"
 )
 
 type User struct {
-	ID   string `json:"id"`
-	Name string `json:"name"`
+	ID        string    `json:"id" gorm:"type:uuid;primary_key" valid:"uuid"`
+	Name      string    `json:"name"`
+	CreatedAt time.Time `json:"created_at" valid:"-"`
+	UpdatedAt time.Time `json:"updated_at" valid:"-"`
 }
 
 func NewUser(name string) (*User, error) {
