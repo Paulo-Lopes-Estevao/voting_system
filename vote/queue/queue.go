@@ -122,9 +122,9 @@ func ShowVotes(exchange, routingKey, ExchangeKind string, ch *amqp.Channel, in c
 		panic(err.Error())
 	}
 
-	if q.Messages <= 0 {
+	/* if q.Messages <= 0 {
 		in <- []byte("")
-	}
+	} */
 
 	err = ch.QueueBind(
 		q.Name,     // queue name
