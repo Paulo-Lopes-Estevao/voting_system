@@ -7,6 +7,7 @@ import (
 
 type IVoteUseCase interface {
 	RegisterVotes(name, vote string) (*entities.Vote, error)
+	ShowVotes() ([]*entities.Vote, error)
 }
 
 type VoteUseCase struct {
@@ -25,6 +26,14 @@ func (v *VoteUseCase) RegisterVotes(name, vote string) (*entities.Vote, error) {
 		Vote: vote,
 	}
 	err := v.Irespositoy.AddVotes(votes)
+	if err != nil {
+		return nil, err
+	}
+	return votes, nil
+}
+
+func (v *VoteUseCase) ShowVotes() ([]*entities.Vote, error) {
+	votes, err := v.Irespositoy.ShowVotes()
 	if err != nil {
 		return nil, err
 	}
