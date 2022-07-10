@@ -17,3 +17,12 @@ func (v *VoteRepository) AddVotes(votes *entities.Vote) error {
 	}
 	return nil
 }
+
+func (v *VoteRepository) ShowVotes() ([]*entities.Vote, error) {
+	var votes []*entities.Vote
+	err := v.Db.Find(&votes).Error
+	if err != nil {
+		return nil, err
+	}
+	return votes, nil
+}
