@@ -28,14 +28,16 @@
 
 <body class="h-vh-100">
     <div class="">
-        <h1 class="d-flex flex-justify-center pt-3">Vote Count</h1>
+        <h1 class="d-flex flex-justify-center pt-3">Votes</h1>
         <h3 class="d-flex flex-justify-around text-center">Best Social Network</h3>
     </div>
 
     <div class="container chart">
         <div class="row">
             <div class="cell-sm-12">
-                <h1 class="d-flex flex-justify-center pt-3">{{ .count }}</h1>
+                    {{range $index, $element := .data}}
+                    <h1 class="d-flex flex-justify-center pt-3"> {{ $element.Name }} - <b>{{ $element.Vote }}</b></h1>
+                    {{end}}
             </div>
         </div>
     </div>
@@ -43,5 +45,4 @@
     <script src="https://cdn.metroui.org.ua/v4.3.2/js/metro.min.js"></script>
 </body>
 </script>
-
 </html>
