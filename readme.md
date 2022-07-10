@@ -1,4 +1,4 @@
-# System Voting
+# Voting System
 ## en
 voting system
 
