@@ -9,11 +9,11 @@ import (
 )
 
 func ConnectDB() *gorm.DB {
-	var dsn string
+	dsn := "vote.db"
 	var db *gorm.DB
 	var err error
 
-	db, err = gorm.Open("vote.db", dsn)
+	db, err = gorm.Open("sqlite3", dsn)
 
 	if err != nil {
 		log.Fatalf("Error connecting to database: %v", err)
