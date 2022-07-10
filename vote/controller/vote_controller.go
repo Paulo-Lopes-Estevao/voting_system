@@ -34,12 +34,12 @@ func (vc *voteController) ShowTheVotesController(c echo.Context) error {
 	go func() {
 		for payload := range in {
 			v.ParseJson(payload)
-			vc.Ivoteusecase.RegisterVotes(v.Name, v.Vote)
 			fmt.Println(v)
+			vc.Ivoteusecase.RegisterVotes(v.Name, v.Vote)
 		}
 	}()
-
+	votes_list, _ := vc.Ivoteusecase.ShowVotes()
 	return c.Render(http.StatusOK, "votes.html", map[string]interface{}{
-		"data": "",
+		"data": votes_list,
 	})
 }
